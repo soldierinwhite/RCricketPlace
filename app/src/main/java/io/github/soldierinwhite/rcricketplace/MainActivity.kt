@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,6 +32,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.graphics.get
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
@@ -79,7 +81,7 @@ class MainActivity : ComponentActivity() {
 
         val loader = ImageLoader(this)
         val motifRequest = ImageRequest.Builder(this)
-            .data("https://i.imgur.com/I7ceXRC.png")
+            .data("https://i.imgur.com/koZZ6GU.png")
             .allowHardware(false)
             .build()
         lifecycleScope.launch {
@@ -128,9 +130,10 @@ fun ShowRandomPixelToChange(
                 }.randomOrNull()
 
             Image(
-                bitmap = place.asImageBitmap(),
+                bitmap = Bitmap.createBitmap(place,290,250, 50, 50).asImageBitmap(),
                 contentDescription = "Place",
                 modifier = Modifier
+                    .size(200.dp)
                     .align(alignment = Alignment.CenterHorizontally)
                     .padding(top = 32.dp)
             )
@@ -181,11 +184,12 @@ fun ShowRandomPixelToChange(
                 color = colorResource(id = R.color.white)
             )
             Image(
-                bitmap = motif.asImageBitmap(),
+                bitmap = Bitmap.createBitmap(motif, 290, 250, 50, 50).asImageBitmap(),
                 contentDescription = "Motif",
                 modifier = Modifier
                     .align(alignment = Alignment.CenterHorizontally)
                     .padding(top = 32.dp)
+                    .size(200.dp)
             )
         }
     }
