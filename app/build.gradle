@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
 }
+ext.kotlin_version = '1.6.10'
 
 android {
     compileSdk 32
@@ -60,4 +61,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    // Ktor
+    implementation "io.ktor:ktor-client-android:1.2.2"
+    implementation "io.ktor:ktor-client-gson:1.2.2"
 }
